@@ -52,17 +52,12 @@
                     </thead>
                     <tbody>
                         <% shortUrls.forEach(shortUrl => { %>
-                        <tr>
+                            <tr>
                             <td><a href="<%= shortUrl.full %>" target="_blank"><%= shortUrl.full %></a></td>
                             <td><a href="<%= shortUrl.short %>" target="_blank"><%= shortUrl.short %></a></td>
                             <td class="fw-bold"><%= shortUrl.clicks %></td>
-                        </tr>
+                            </tr>
                         <% }) %>
-                        <tr>
-                            <td><a href="https://tinyurl.com/abc123" target="_blank">https://tinyurl.com/abc123</a></td>
-                            <td><a href="https://tinyurl.com/abc123" target="_blank">https://tinyurl.com/abc123</a></td>
-                            <td class="fw-bold">10</td>
-                        </tr>
                     </tbody>
                 </table>
             </div>
