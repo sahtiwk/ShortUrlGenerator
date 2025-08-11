@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tiny URL Generator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .card {
+            border-radius: 12px;
+        }
+        table a {
+            text-decoration: none;
+            color: #0d6efd;
+        }
+        table a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container py-5">
+        <div class="text-center mb-4">
+            <h1 class="fw-bold text-primary">🔗 Tiny URL Generator</h1>
+            <p class="text-muted">Shorten long links and track clicks instantly</p>
+        </div>
+
+        <div class="card shadow-sm p-4 mb-5">
+            <form action="/shortUrls" method="post" class="row g-2">
+                <div class="col-md-9">
+                    <input type="url" id="fullurl" name="fullUrl" placeholder="Enter full URL here"
+                        class="form-control" required>
+                </div>
+                <div class="col-md-3 d-grid">
+                    <button type="submit" class="btn btn-success fw-semibold">Generate</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="card shadow-sm p-3">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Full URL</th>
+                            <th>Tiny URL</th>
+                            <th>Clicks</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% shortUrls.forEach(shortUrl => { %>
+                        <tr>
+                            <td><a href="<%= shortUrl.full %>" target="_blank"><%= shortUrl.full %></a></td>
+                            <td><a href="<%= shortUrl.short %>" target="_blank"><%= shortUrl.short %></a></td>
+                            <td class="fw-bold"><%= shortUrl.clicks %></td>
+                        </tr>
+                        <% }) %>
+                        <tr>
+                            <td><a href="https://tinyurl.com/abc123" target="_blank">https://tinyurl.com/abc123</a></td>
+                            <td><a href="https://tinyurl.com/abc123" target="_blank">https://tinyurl.com/abc123</a></td>
+                            <td class="fw-bold">10</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
